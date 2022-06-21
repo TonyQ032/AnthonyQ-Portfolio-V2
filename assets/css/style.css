@@ -6,31 +6,73 @@
 
 * {
   font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  padding: 0;
-  margin: 0;
   background-color: var(--background-color);
+  scroll-behavior: smooth;
+}
+
+/* Nav bar/Hamburger menu CSS */
+li {
+  list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar {
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--background-color);
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.nav-link {
+  transition: 0.3s ease;
+}
+
+.nav-link:hover {
+  color: rgb(136 136 136);
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
 }
 
 /* Header CSS */
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+header {
   background-color: var(--background-color);
-  width: 100%;
-  position: fixed;
-  top: 0;
 }
 
-nav p {
-  padding: 3px 10px;
-}
-
-/* Hero section CSS */
 #hero {
   margin-top: 90px;
 }
@@ -79,4 +121,63 @@ h1 {
 #about-me {
   background-color: black;
   color: white;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* for testing purposes only */
+  height: 1000px;
+}
+
+#about-me h2 {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  width: 150px;
+  justify-content: center;
+}
+
+@media(max-width:768px) {
+  
+  /* Nav Menu/Hamburger Menu CSS */
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .navbar {
+    justify-content: flex-start;
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    flex-direction: column;
+    background-color: var(--background-color);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .nav-item {
+    margin: 16px 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+    border-bottom: 1px solid black;
+  }
 }
